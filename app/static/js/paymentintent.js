@@ -6,14 +6,22 @@ const paymentProcessing = document.getElementById('payment-processing');
 const amountToBeCollected = document.getElementById('amount-to-be-collected');
 const amountToBeShown = document.getElementById('amount-to-be-shown');
 const cancelPayment = document.getElementById('cancel-payment');
+const wrongAmountError = document.getElementById('wrong-amount-error');
+const divWrongAmountError = document.getElementById('div-wrong-amount-error');
 
 var amount = 0;
 
 submitPayment.addEventListener('click', function() {
-    paymentDataCollection.classList.add('d-none');
-    paymentProcessing.classList.remove('d-none');
     amount = amountToBeCollected.value;
-    amountToBeShown.innerHTML = `$${amount}`;
+    if(amount > 0) {
+        divWrongAmountError.classList.add('d-none');
+        paymentDataCollection.classList.add('d-none');
+        paymentProcessing.classList.remove('d-none');
+        amountToBeShown.innerHTML = `$${amount}`;
+    } else {
+        divWrongAmountError.classList.remove('d-none');
+        wrongAmountError.innerHTML = 'Please enter a valid amount';
+    }
 });
 
 cancelPayment.addEventListener('click', function() {

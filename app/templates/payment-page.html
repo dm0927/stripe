@@ -1,0 +1,76 @@
+{% extends "base/base.html" %}
+
+{% block title %}Payment Page{% endblock %}
+
+{% block content %}
+    <div class="container justify-content-center" id="payment-data-collection">
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="text" class="form-control" id="amount-to-be-collected" placeholder="Enter Amount">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary mb-1" id="submit-payment">Submit Payment</button>
+        </div>
+    </div>
+    <div class="container justify-content-center d-none" id="payment-processing">
+        <h1>Payment Page</h1>
+        <div class="form-row">
+            <div class="col-md-8 border">
+                <div class="form-group">
+                    <label for="postal-code">Name on Card</label>
+                    <input type="text" class="form-control" id="card-name" placeholder="Enter Card Name">
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <div class="stripe-element-container" id="card-number"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="expiry-date">Expiry Date</label>
+                        <div class="stripe-element-container" id="card-expiry"></div>
+                    </div> 
+                    <div class="form-group  col-md-6">
+                        <label for="cvc">CVC</label>
+                        <div class="stripe-element-container" id="card-cvc"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="postal-code">Address Line 1</label>
+                    <input type="text" class="form-control" id="card-address-one" placeholder="Address Line 1">
+                </div>
+                <div class="form-group">
+                    <label for="postal-code">Address Line 2</label>
+                    <input type="text" class="form-control" id="card-address-two" placeholder="Address Line 2">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="expiry-date">City</label>
+                        <input type="text" class="form-control" id="card-city" placeholder="Enter City">
+                    </div>
+                    <div class="form-group  col-md-4">
+                        <label for="cvc">State</label>
+                        <input type="text" class="form-control" id="card-state" placeholder="Enter State"> 
+                    </div> 
+                    <div class="form-group  col-md-4">
+                        <label for="cvc">Country</label>
+                        <input type="text" class="form-control" id="card-country" placeholder="Enter Country">
+                    </div>  
+                </div>
+                <div class="form-group">
+                    <label for="postal-code">Postal Code</label>
+                    <input type="text" class="form-control" id="postal-code" placeholder="Enter Postal Code">
+                </div>
+    
+                <button class="btn btn-primary mb-1" id="submit-card-details">Submit Payment</button>
+                <button class="btn btn-danger mb-1" id="cancel-payment">Cancel Payment</button>
+            </div>
+            <div class="col-md-3 ml-1 border">
+                <div class="form-group align-self-center">
+                    <label for="amount">Amount:<span id="amount-to-be-shown"></span></label>                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{{ url_for('static', filename='js/paymentintent.js') }}"></script>
+{% endblock %}

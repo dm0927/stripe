@@ -1,16 +1,7 @@
-from flask import Blueprint, jsonify, make_response, request, render_template
+from flask import Blueprint
+from app.controllers.paymentintent import PaymentPage
 
 paymentintent = Blueprint('paymentintent', __name__)
 
-@paymentintent.route('/payment-page', methods=['GET'])
-def payment_page():
-    return render_template('payment-page.html')
+paymentintent.add_url_rule('/payment-page', view_func=PaymentPage.as_view('payment_page'))
 
-@paymentintent.route('/create-payment-intent', methods=['POST'])
-def create_payment():
-    data = {
-        'name': 'T-shirt',
-    }
-
-    response = make_response(jsonify(data), 200)
-    return response

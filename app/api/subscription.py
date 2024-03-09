@@ -1,16 +1,5 @@
 import json
-import stripetest
-from stripe_integration.api.customer import Customer
-from stripe_integration.api.paymentmethod import PaymentMethod
-from stripe_integration.api.price import Price
-from stripe_integration.api.invoice import Invoice
-from stripe_integration.api.coupon import Coupon
-from stripe_integration.config import StripeConfig
-
-
-stripetest.api_key = StripeConfig.API_KEY
-endpoint_secret = StripeConfig.endpoint_secret
-
+import stripe
 
 class Subscription:
 

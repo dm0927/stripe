@@ -1,3 +1,7 @@
+from api import Stripe
+
+stripe = Stripe()
+
 class PaymentIntent:
 
     def __init__(self):
